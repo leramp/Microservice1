@@ -29,7 +29,7 @@ public class CustomerServiceImpl  implements CustomerService {
     public Customer createCustomer(Customer customer) {
 
         Customer customerDB = customerRepository.findByNumberID ( customer.getNumberID () );
-        if (customerDB != null){
+        if (customerDB != null){//esta validación hace q el método sea idempotente
             return  customerDB;
         }
 

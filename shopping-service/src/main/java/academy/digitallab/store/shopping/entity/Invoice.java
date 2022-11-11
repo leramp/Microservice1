@@ -35,9 +35,11 @@ public class Invoice {
 
 
 
-    @Valid
+    @Valid//esto es para validar cada item de la factura
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //el cascade all signigica que si se crea una cabecera se deben crear
+    //todos sus items y si se borra la cabecera también se borra el detalle
     @JoinColumn(name = "invoice_id")
     private List<InvoiceItem> items;
 
@@ -50,7 +52,8 @@ public class Invoice {
         items = new ArrayList<>();
     }
 
-    @PrePersist
+    @PrePersist//en este atributo se registra la fecha de creacion de la factura
+    //y la anotación es para que se registre antes de insertar en nuestra bbdd
     public void prePersist() {
         this.createAt = new Date();
     }

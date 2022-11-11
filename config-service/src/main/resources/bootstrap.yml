@@ -1,12 +1,17 @@
 server:
   port: 8081
-
+#ahora mapeamos donde se encuentran nuestros archivos de configuración
+#ahora los arch de conf de cada uno de nuestros servicios ahora se ubicarán en un
+#nuevo lugar desde donde va a estar leyendo config services para exponer estas configuraciones
+#a través de una api rest. Para eso vamos a la ruta donde está el repositorio y creamos
+#una carpeta que se llamará config-data y lo que vamos a hacer es copiar todos los archivos de configuración
+# de nuestros microservicios
 spring:
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/digitallab-academy/ms-course-youtube.git
+          uri: https://github.com/leramp/Microservice1.git
           searchPaths: config-data
           username: ${GIT_USER}
           password: ${GIT_PASSWORD}

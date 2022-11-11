@@ -18,7 +18,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Slf4j
+@Slf4j//acá implementamos una interface que nos da lombok que es el Slf4j
+//el cual se puede implementar con "logstash o con logsforgi"
+//con esto se implementan los logs de la aplicación, sean informativos o de errores
+//luego mezclaremos esta interface con otros componentes que nos brinda spring clouds
+//para poder hacer el tracing de nuestra aplicación
 @RestController
 @RequestMapping("/invoices")
 public class InvoiceRest {

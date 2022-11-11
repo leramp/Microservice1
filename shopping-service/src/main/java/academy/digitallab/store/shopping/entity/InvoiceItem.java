@@ -17,6 +17,7 @@ public class InvoiceItem  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Positive(message = "El stock debe ser mayor que cero")
+   //esta validación es para que la cantidad insertada sea siempre mayor a cero
     private Double quantity;
     private Double  price;
 
@@ -24,7 +25,9 @@ public class InvoiceItem  {
     private Long productId;
 
 
-    @Transient
+    @Transient//este atributo no será registrado en la bbdd, por eso la anotación
+    //es decir aunque lo vamos a poder utilizar en nuestro pojo y en todo el sistema
+    //e incluso devolverlo al cliente generando un json no va a ser registrado en la bbdd
     private Double subTotal;
 
     @Transient
